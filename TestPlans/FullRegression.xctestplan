@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "full-regression-config",
+      "name" : "Full Regression Configuration",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:YourApp.xcodeproj",
+      "identifier" : "YourAppUITests",
+      "name" : "YourAppUITests"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:YourApp.xcodeproj",
+        "identifier" : "YourAppUITests",
+        "name" : "YourAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
