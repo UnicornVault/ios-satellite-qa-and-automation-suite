@@ -34,7 +34,7 @@ this scenario, since a cell tower doesn't physically move.
 - Reusable helper functions and a maintainable page-object-style structure
 - Verifying real-world technical claims against current sources before writing tests
   around them, rather than assuming a feature works the way it's commonly described
-
+This is an independent portfolio project for demonstration purposes. Company and product names referenced (Apple, T-Mobile, Starlink) are used descriptively to illustrate real-world testing scenarios and are trademarks of their respective owners
 ## Project structure
 
 ```
