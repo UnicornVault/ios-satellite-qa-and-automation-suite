@@ -1,0 +1,78 @@
+{
+  "configurations" : [
+    {
+      "id" : "smoke-config",
+      "name" : "Smoke Configuration",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:YourApp.xcodeproj",
+      "identifier" : "YourAppUITests",
+      "name" : "YourAppUITests"
+    }
+  },
+  "testTargets" : [
+    {
+      "selectedTests" : [
+        "LoginTests\/testSuccessfulLogin()",
+        "EcommerceTests\/testAddToCartUpdatesBadgeCount()",
+        "EcommerceTests\/testValidPromoCodeAppliesDiscount()",
+        "EcommerceTests\/testCheckoutWithSavedPaymentSucceeds()",
+        "SocialTests\/testFeedLoadsWithContent()",
+        "SocialTests\/testLikeIncrementsCount()",
+        "SocialTests\/testCreatePostWithImagePublishes()",
+        "FintechTests\/testBalanceDisplaysOnLaunch()",
+        "FintechTests\/testSensitiveDataRequiresBiometricAuth()",
+        "FintechTests\/testTransferRequiresConfirmationStep()",
+        "ProductivityTests\/testCreatedItemPersistsAfterRelaunch()",
+        "ProductivityTests\/testOfflineChangesSyncWhenReconnected()",
+        "AccountManagerTests\/testSearchFindsClientAccount()",
+        "AccountManagerTests\/testEditContactInfoSaves()",
+        "AccountManagerTests\/testNonAdminCannotSeeRestrictedFields()",
+        "CloudProvisioningTests\/testProvisioningRequestCreatesBucketAutomatically()",
+        "CloudProvisioningTests\/testNewBucketDefaultsToPrivateAccess()",
+        "OpenOrderReportTests\/testReportLoadsWithOpenOrders()",
+        "OpenOrderReportTests\/testTappingColumnHeaderSortsRows()",
+        "ProcurementTests\/testAllocateHoursToProjectSaves()",
+        "ProcurementTests\/testProjectAllocationsRollUpToCompanyTotal()",
+        "ProcurementTests\/testCompanyOpenOrdersDisplaysExpectedScale()",
+        "TelecomTests\/testDataUsageDisplaysOnLaunch()",
+        "TelecomTests\/testSIMActivationSucceeds()",
+        "TelecomTests\/testPortNumberRequestShowsPendingStatus()",
+        "TelecomTests\/testSignalIndicatorShowsCurrentNetworkType()",
+        "TelecomTests\/testEnablingRoamingShowsRateDisclosure()",
+        "TelecomTests\/testPlanUpgradeShowsProratedCostPreview()",
+        "TelecomTests\/testESIMQRCodeProvisionsLine()",
+        "TelecomTests\/testEnablingHotspotShowsNetworkCredentials()",
+        "TelecomTests\/testAutoJoinsKnownWiFiWhenInRange()",
+        "TelecomTests\/testAutoFallsBackToCellularWhenWiFiLost()",
+        "TelecomTests\/testDataUsageSyncsAutomaticallyInRealTime()",
+        "TelecomTests\/testAutoRestrictsDataWhenNearingLimit()",
+        "TelecomTests\/testAutoPayChargesOnDueDateWithoutManualAction()",
+        "SatelliteTests\/testSatelliteModeActivatesWhenNoCellularOrWiFi()",
+        "SatelliteTests\/testSatelliteConnectionShowsPointingGuidance()",
+        "SatelliteTests\/testEmergencySOSViaSatelliteInitiatesSuccessfully()",
+        "SatelliteTests\/testAutoSwitchesFromSatelliteBackToCellularWhenAvailable()",
+        "SatelliteTests\/testDirectToCellConnectsAutomaticallyWithoutPointing()",
+        "SatelliteTests\/testDirectToCellShowsCorrectNetworkName()",
+        "SatelliteTests\/testMessageSurvivesMidSendHandoff()",
+        "SatelliteTests\/testConnectionSearchShowsPatientWaitingState()",
+        "AIAgentTests\/testHighStakesActionRequiresExplicitConfirmation()",
+        "AIAgentTests\/testLowStakesReadOnlyActionDoesNotRequireConfirmation()",
+        "AIAgentTests\/testResistsPromptInjectionAttempt()",
+        "AIAgentTests\/testLowConfidenceRequestPromptsClarification()",
+        "AIAgentTests\/testAIServiceUnavailableFallsBackGracefully()"
+      ],
+      "target" : {
+        "containerPath" : "container:YourApp.xcodeproj",
+        "identifier" : "YourAppUITests",
+        "name" : "YourAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
