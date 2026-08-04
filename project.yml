@@ -12,7 +12,7 @@ targets:
       - Sources/DemoApp
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.unicornvault.demoapp
+        PRODUCT_BUNDLE_IDENTIFIER: io.unicornvault.demoapp
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         GENERATE_INFOPLIST_FILE: YES
         MARKETING_VERSION: "1.0"
@@ -26,11 +26,12 @@ targets:
     sources:
       - UITests/LoginTests.swift
       - UITests/Helpers/LoginHelper.swift
+      - UITests/Satellite/SatelliteTests.swift
     dependencies:
       - target: DemoApp
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.unicornvault.demoapp.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: io.unicornvault.demoapp.uitests
         GENERATE_INFOPLIST_FILE: YES
         SWIFT_VERSION: "5.0"
         TEST_TARGET_NAME: DemoApp
