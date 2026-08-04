@@ -1,6 +1,6 @@
 name: DemoApp
 options:
-  bundleIdPrefix: com.unicornvault
+  bundleIdPrefix: io.unicornvault
   deploymentTarget:
     iOS: "17.0"
 
