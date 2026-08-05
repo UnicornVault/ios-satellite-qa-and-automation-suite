@@ -93,7 +93,7 @@ struct SatelliteStatusView: View {
         }
         .onAppear {
             if connectionState == .searching {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
                     connectionState = .connectedSatellite
                 }
             }
