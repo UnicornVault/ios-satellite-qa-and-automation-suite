@@ -1,5 +1,3 @@
-# ios-satellite-qa-and-automation-suite
-XCUITest suite: satellite connectivity, plus 10 more app genres.
 # iOS Automation Portfolio — XCUITest + GitHub Actions
 
 ![iOS Tests](https://github.com/yourusername/yourrepo/actions/workflows/ios-tests.yml/badge.svg)
@@ -26,6 +24,14 @@ of an alarming error while the initial lock happens, and routine reconnects don'
 the user with a notification every time. Ground-based cellular testing has no version of
 this scenario, since a cell tower doesn't physically move.
 
+**All 17 satellite tests run against a real SwiftUI implementation** — see
+`Sources/DemoApp/SatelliteHomeView.swift` and `SatelliteMessagesView.swift` — not just
+written as hypothetical assertions. They execute via the "Demo App — Proof of Concept"
+GitHub Actions workflow on a free macOS runner. One honest caveat: two of the original
+test scenarios set `launchEnvironment` *after* the app has already launched, which can't
+actually reach a running process — those specific mid-session transitions are approximated
+with a short timer instead, documented directly in the view's code comments.
+
 ## What this demonstrates
 
 - Writing and structuring XCUITest suites in Swift
@@ -34,7 +40,7 @@ this scenario, since a cell tower doesn't physically move.
 - Reusable helper functions and a maintainable page-object-style structure
 - Verifying real-world technical claims against current sources before writing tests
   around them, rather than assuming a feature works the way it's commonly described
-This is an independent portfolio project for demonstration purposes. Company and product names referenced (Apple, T-Mobile, Starlink) are used descriptively to illustrate real-world testing scenarios and are trademarks of their respective owners
+
 ## Project structure
 
 ```
@@ -69,6 +75,8 @@ This is an independent portfolio project for demonstration purposes. Company and
 │   │   └── TelecomTests.swift        # Data usage, SIM activation, number porting, outages, billing
 │   ├── AIAgent/
 │   │   └── AIAgentTests.swift        # Guardrails, human-in-the-loop confirmation, prompt injection resistance, graceful degradation
+│   ├── Purchasing/
+│   │   └── PurchasingTests.swift     # Requisitions, approval thresholds, vendor comparison, POs, receiving, invoice matching
 │   └── Helpers/
 │       └── LoginHelper.swift         # Shared login helper used across test files
 ├── LICENSE
@@ -98,6 +106,7 @@ This is an independent portfolio project for demonstration purposes. Company and
 | **Procurement/Resource Allocation** | `Procurement/ProcurementTests.swift` | Hourly project allocation, over-allocation limits, rollup accuracy to company open orders (~$30M) and P&L |
 | **Telecom** | `Telecom/TelecomTests.swift` | Data usage, SIM/eSIM activation, porting, network/signal status, roaming, plan changes, Wi-Fi calling, hotspot, multi-line plans, billing, automation (auto network switching, data-limit syncing, auto-pay) — see the flagship row above for satellite |
 | **AI/Agentic Features** | `AIAgent/AIAgentTests.swift` | Human-in-the-loop confirmation for high-stakes actions, proportionate guardrails, prompt-injection resistance, out-of-scope refusal, confidence/clarification prompts, AI-content labeling, graceful degradation, audit logging |
+| **Purchasing/Buyer Tasks** | `Purchasing/PurchasingTests.swift` | Requisition creation, approval thresholds for high-value spend, vendor price comparison, requisition-to-PO conversion, receiving, invoice 3-way-match mismatch flagging |
 
 ## Smoke vs. full regression
 
@@ -145,6 +154,20 @@ This suite is part of a broader automation background covering:
 - General QA methodology, SDLC/STLC, and automated test framework design
 
 ## Author
+
+**UnicornVault**
+
+## License
+
+MIT — see [LICENSE](./LICENSE) for details.
+
+## Disclaimer
+
+This is an independent portfolio project for demonstration purposes. Company and product
+names referenced (Apple, T-Mobile, Starlink, etc.) are used descriptively to illustrate
+real-world testing scenarios and are trademarks of their respective owners. This project is
+not affiliated with, endorsed by, or sponsored by any of the companies mentioned.
+
 
 **UnicornVault**
 
