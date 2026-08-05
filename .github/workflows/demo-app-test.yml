@@ -68,3 +68,4 @@ jobs:
         with:
           name: demo-app-test-results
           path: DemoAppResults.xcresult
+          if-no-files-found: ignore
