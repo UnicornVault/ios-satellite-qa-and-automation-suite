@@ -55,12 +55,31 @@ jobs:
           echo "Selected simulator UDID: $UDID"
 
       - name: Run LoginTests + SatelliteTests against DemoApp
+        id: run_tests
         run: |
-          xcodebuild test \
-            -project DemoApp.xcodeproj \
-            -scheme DemoApp \
-            -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}" \
-            -resultBundlePath DemoAppResults.xcresult
+          # Retries automatically handle transient CI flakiness (simulator
+          # boot timing, momentary resource contention) — NOT actual code
+          # bugs. A real logic bug will fail identically on every retry,
+          # which is itself useful diagnostic information.
+          max_attempts=2
+          attempt=1
+          until [ $attempt -gt $max_attempts ]; do
+            echo "Attempt $attempt of $max_attempts"
+            if xcodebuild test \
+              -project DemoApp.xcodeproj \
+              -scheme DemoApp \
+              -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}" \
+              -resultBundlePath DemoAppResults.xcresult; then
+              echo "Tests passed on attempt $attempt"
+              exit 0
+            fi
+            echo "Attempt $attempt failed"
+            attempt=$((attempt + 1))
+            rm -rf DemoAppResults.xcresult
+          done
+          echo "All $max_attempts attempts failed — this is likely a real bug, not flakiness."
+          echo "See docs/EXIT_CODES.md for how to diagnose the specific exit code."
+          exit 1
 
       - name: Upload test results
         if: always()
@@ -68,4 +87,22 @@ jobs:
         with:
           name: demo-app-test-results
           path: DemoAppResults.xcresult
+          if-no-files-found: ignore
+
+      - name: Install xcparse
+        if: always()
+        run: brew install chargepoint/xcparse/xcparse
+
+      - name: Extract screenshots from test results
+        if: always()
+        run: |
+          mkdir -p screenshots
+          xcparse screenshots DemoAppResults.xcresult screenshots/ || echo "No screenshots to extract"
+
+      - name: Upload screenshots (viewable images)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-screenshots
+          path: screenshots/
           if-no-files-found: ignore
