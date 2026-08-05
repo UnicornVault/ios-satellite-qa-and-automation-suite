@@ -26,6 +26,7 @@ targets:
     sources:
       - UITests/LoginTests.swift
       - UITests/Helpers/LoginHelper.swift
+      - UITests/Helpers/ScreenshotHelper.swift
       - UITests/Satellite/SatelliteTests.swift
     dependencies:
       - target: DemoApp
