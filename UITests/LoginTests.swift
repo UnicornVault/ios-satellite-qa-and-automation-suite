@@ -24,6 +24,7 @@ final class LoginTests: XCTestCase {
         app.loginAsValidUser()
 
         XCTAssertTrue(app.navigationBars["ItemList"].waitForExistence(timeout: 5))
+        attachScreenshot(named: "SuccessfulLogin_ItemListShown")
     }
 
     /// Validates client-side form validation: tapping Login with both fields
@@ -35,6 +36,7 @@ final class LoginTests: XCTestCase {
         app.buttons["loginButton"].tap()
 
         XCTAssertTrue(app.staticTexts["Please enter credentials"].exists)
+        attachScreenshot(named: "EmptyFields_ErrorShown")
     }
 
     /// Validates server-side auth failure handling: correct username but wrong
@@ -51,5 +53,6 @@ final class LoginTests: XCTestCase {
         app.buttons["loginButton"].tap()
 
         XCTAssertTrue(app.staticTexts["Invalid credentials"].waitForExistence(timeout: 3))
+        attachScreenshot(named: "WrongPassword_ErrorShown")
     }
 }
