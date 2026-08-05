@@ -54,6 +54,7 @@ final class SatelliteTests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Satellite available"].waitForExistence(timeout: 8))
+        attachScreenshot(named: "Satellite_ModeActivated")
     }
 
     /// Satellite mode does NOT activate if cellular or Wi-Fi is still
@@ -78,6 +79,7 @@ final class SatelliteTests: XCTestCase {
         app.buttons["connectToSatelliteButton"].tap()
 
         XCTAssertTrue(app.staticTexts["pointDeviceGuidanceLabel"].waitForExistence(timeout: 5))
+        attachScreenshot(named: "Satellite_PointingGuidanceShown")
     }
 
     /// [SMOKE] Emergency SOS via satellite can be initiated and shows a
@@ -94,6 +96,7 @@ final class SatelliteTests: XCTestCase {
         app.buttons["confirmSOSButton"].tap()
 
         XCTAssertTrue(app.staticTexts["Connecting to emergency services via satellite"].waitForExistence(timeout: 8))
+        attachScreenshot(named: "Satellite_EmergencySOSConnecting")
     }
 
     /// A satellite message composed while out of signal range queues
@@ -175,6 +178,7 @@ final class SatelliteTests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Connected via satellite"].waitForExistence(timeout: 8))
+        attachScreenshot(named: "DirectToCell_ConnectedAutomatically")
         XCTAssertFalse(app.staticTexts["pointDeviceGuidanceLabel"].exists)
     }
 
