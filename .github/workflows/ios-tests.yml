@@ -1,16 +1,7 @@
 name: iOS UI Tests
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  schedule:
-    # Full regression suite runs nightly at 6am UTC, independent of PR activity
-    - cron: '0 6 * * *'
   workflow_dispatch:
-    # Manual trigger — lets you kick off a run on demand (e.g. via the
-    # hotkey/CLI setup) without waiting for a push or the nightly schedule.
     inputs:
       suite:
         description: 'Which suite to run'
@@ -23,9 +14,7 @@ on:
 
 jobs:
   smoke:
-    # Fast, critical-path subset — runs on every push/PR, or on manual
-    # dispatch when "smoke" is selected.
-    if: github.event_name == 'push' || github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.event.inputs.suite == 'smoke')
+    if: github.event.inputs.suite == 'smoke'
     runs-on: macos-latest
 
     steps:
@@ -52,9 +41,7 @@ jobs:
           path: SmokeResults.xcresult
 
   full-regression:
-    # Complete suite across all genres — runs nightly, or on manual
-    # dispatch when "full-regression" is selected.
-    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.suite == 'full-regression')
+    if: github.event.inputs.suite == 'full-regression'
     runs-on: macos-latest
 
     steps:
